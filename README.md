@@ -2,7 +2,7 @@
 
 Usage
 
-```
+```javascript
 var LATITUDE = 3.0474959, 	//Specifies the coordinates of the input location as a triple [latitude, longitude, elevation]
 	LONGITUDE = 101.6884195,
 	TIMEZONE = 8;
