@@ -17,6 +17,7 @@
 
 	var LATITUDE = 3.0474959, 	//Specifies the coordinates of the input location as a triple [latitude, longitude, elevation]
 		LONGITUDE = 101.6884195,
+		HJR_OFFSET = 0, 		//Whole number -N to subtract N to add			
 		TIMEZONE = 8, 			//The difference to Greenwich time (GMT) in hours. If omitted or set to 'auto', timezone is extracted from the system.
 		pLIST = ['Fajr',  'Dhuhr', 'Asr', 'Maghrib', 'Isha', ]; //'Sunrise','Midnight'
 
@@ -169,7 +170,7 @@
 	function updatesDates(){
 		var day = moment().format('dddd');
 		var date = moment().format('DD MMMM, YYYY');
-		var hijr = moment().format('iDD iMMMM, iYYYY');
+		var hijr = (HJR_OFFSET < 0)? moment().subtract(Math.abs(HJR_OFFSET), 'days').format('iDD iMMMM, iYYYY') : moment().add(Math.abs(HJR_OFFSET), 'days').format('iDD iMMMM, iYYYY');
 
 		$('#heading-today').text(day);
 		$('#heading-date-eng').text(date);
